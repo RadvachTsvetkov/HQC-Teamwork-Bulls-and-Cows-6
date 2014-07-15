@@ -441,6 +441,43 @@
             Assert.AreEqual(4, bulls);
             Assert.AreEqual(0, cows);
         }
+
+        [TestMethod]
+        public void ProccessGues_Secret4440Guess1234_0Bull1Cow()
+        {
+            // Arrange
+            BullsAndCows game = new BullsAndCows();
+            int bulls = 0;
+            int cows = 0;
+            int[] secret = { 4, 4, 4, 0 };
+            string guess = "1234";
+
+            // Act
+            game.ProccessGues(secret, guess, out bulls, out cows);
+
+            // Assert
+            Assert.AreEqual(0, bulls);
+            Assert.AreEqual(1, cows);
+        }
+
+
+        [TestMethod]
+        public void ProccessGues_Secret1234Guess4440_0Bull1Cow()
+        {
+            // Arrange
+            BullsAndCows game = new BullsAndCows();
+            int bulls = 0;
+            int cows = 0;
+            int[] secret = { 1, 2, 3, 4 };
+            string guess = "4440";
+
+            // Act
+            game.ProccessGues(secret, guess, out bulls, out cows);
+
+            // Assert
+            Assert.AreEqual(0, bulls);
+            Assert.AreEqual(1, cows);
+        }
     }
 }
 
