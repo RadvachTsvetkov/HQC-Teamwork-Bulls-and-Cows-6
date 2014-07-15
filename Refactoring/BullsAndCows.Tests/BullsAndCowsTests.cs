@@ -2,25 +2,96 @@
 {
     using System;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using System.Text;
 
     [TestClass]
     public class BullsAndCowsTests
     {
+        private static Random randomGenerator;
+        public BullsAndCowsTests()
+        {
+            randomGenerator = new Random();
+        }
+
+        private string GetRandomNumberAsString(int count = 4)
+        {
+            var output = new StringBuilder();
+            for (int i = 0; i < count; i++)
+            {
+                output.Append(randomGenerator.Next(0, 10));
+            }
+
+            return output.ToString();
+        }
+
         [TestMethod]
-        public void ShouldBeEqual_ifGuessLengthHasExpectedLength()
+        public void ProccessGues_ifGuessLengthEqualsToNUMBER_OF_DIGITSAndGuessNumberParseSucceed_ShouldReturnTrue()
         {
             // Arrange
             BullsAndCows game = new BullsAndCows();
             int bulls = 0;
             int cows = 0;
             int[] secret = { 1, 1, 1, 1 };
-            string guess = "1234";
+            string guess = GetRandomNumberAsString(BullsAndCows.NUMBER_OF_DIGITS);
 
             // Act
             bool isValidGuess = game.ProccessGues(secret, guess, out bulls, out cows);
 
             // Assert
-            Assert.AreEqual(guess.Length == BullsAndCows.NUMBER_OF_DIGITS, isValidGuess);
+            Assert.IsTrue(isValidGuess);
+        }
+
+        [TestMethod]
+        public void ProccessGues_IfGuessNumberParseFails_ShouldReturnFalse()
+        {
+            // Arrange
+            BullsAndCows game = new BullsAndCows();
+            int bulls = 0;
+            int cows = 0;
+            int[] secret = { 1, 1, 1, 1 };
+            string[] guesses = { "G123", "1G34", "12G4", "123G" };
+
+            for (int i = 0; i < guesses.Length; i++)
+            {
+                string guess = guesses[i];
+                bool isValidGuess = game.ProccessGues(secret, guess, out bulls, out cows);
+                Assert.IsFalse(isValidGuess);
+            }
+
+        }
+
+        [TestMethod]
+        public void ProccessGues_ifGuessLengthIsBiggerThanNUMBER_OF_DIGITS_ShouldReturnFalse()
+        {
+            // Arrange
+            BullsAndCows game = new BullsAndCows();
+            int bulls = 0;
+            int cows = 0;
+            int[] secret = { 1, 1, 1, 1 };
+            string guess = GetRandomNumberAsString(BullsAndCows.NUMBER_OF_DIGITS + 1);
+
+            // Act
+            bool isValidGuess = game.ProccessGues(secret, guess, out bulls, out cows);
+
+            // Assert
+            Assert.IsFalse(isValidGuess);
+        }
+
+        [TestMethod]
+        public void ProccessGues_ifGuessLengthIsSmallerThanNUMBER_OF_DIGITS_ShouldReturnFalse()
+        {
+            // Arrange
+            BullsAndCows game = new BullsAndCows();
+            int bulls = 0;
+            int cows = 0;
+            int[] secret = { 1, 1, 1, 1 };
+            string guess = GetRandomNumberAsString(BullsAndCows.NUMBER_OF_DIGITS - 1);
+
+            // Act
+            bool isValidGuess = game.ProccessGues(secret, guess, out bulls, out cows);
+
+            // Assert
+            Assert.IsFalse(isValidGuess);
         }
 
         // Документирани тестове
@@ -38,7 +109,8 @@
             game.ProccessGues(secret, guess, out bulls, out cows);
 
             // Assert
-            Assert.IsTrue(cows == 0 && bulls == 0);
+            Assert.AreEqual(0, bulls);
+            Assert.AreEqual(0, cows);
         }
 
         [TestMethod]
@@ -55,7 +127,8 @@
             game.ProccessGues(secret, guess, out bulls, out cows);
 
             // Assert
-            Assert.IsTrue(cows == 1 && bulls == 0);
+            Assert.AreEqual(0, bulls);
+            Assert.AreEqual(1, cows);
         }
 
         [TestMethod]
@@ -72,7 +145,8 @@
             game.ProccessGues(secret, guess, out bulls, out cows);
 
             // Assert
-            Assert.IsTrue(cows == 2 && bulls == 0);
+            Assert.AreEqual(0, bulls);
+            Assert.AreEqual(2, cows);
         }
 
         [TestMethod]
@@ -89,7 +163,8 @@
             game.ProccessGues(secret, guess, out bulls, out cows);
 
             // Assert
-            Assert.IsTrue(cows == 3 && bulls == 0);
+            Assert.AreEqual(0, bulls);
+            Assert.AreEqual(3, cows);
         }
 
         [TestMethod]
@@ -106,7 +181,8 @@
             game.ProccessGues(secret, guess, out bulls, out cows);
 
             // Assert
-            Assert.IsTrue(cows == 4 && bulls == 0);
+            Assert.AreEqual(0, bulls);
+            Assert.AreEqual(4, cows);
         }
 
         [TestMethod]
@@ -123,7 +199,8 @@
             game.ProccessGues(secret, guess, out bulls, out cows);
 
             // Assert
-            Assert.IsTrue(cows == 0 && bulls == 1);
+            Assert.AreEqual(1, bulls);
+            Assert.AreEqual(0, cows);
         }
 
         [TestMethod]
@@ -140,7 +217,8 @@
             game.ProccessGues(secret, guess, out bulls, out cows);
 
             // Assert
-            Assert.IsTrue(cows == 0 && bulls == 2);
+            Assert.AreEqual(2, bulls);
+            Assert.AreEqual(0, cows);
         }
 
         [TestMethod]
@@ -157,7 +235,8 @@
             game.ProccessGues(secret, guess, out bulls, out cows);
 
             // Assert
-            Assert.IsTrue(cows == 0 && bulls == 3);
+            Assert.AreEqual(3, bulls);
+            Assert.AreEqual(0, cows);
         }
 
         [TestMethod]
@@ -174,7 +253,8 @@
             game.ProccessGues(secret, guess, out bulls, out cows);
 
             // Assert
-            Assert.IsTrue(cows == 0 && bulls == 4);
+            Assert.AreEqual(4, bulls);
+            Assert.AreEqual(0, cows);
         }
 
         [TestMethod]
@@ -191,7 +271,8 @@
             game.ProccessGues(secret, guess, out bulls, out cows);
 
             // Assert
-            Assert.IsTrue(cows == 1 && bulls == 1);
+            Assert.AreEqual(1, bulls);
+            Assert.AreEqual(1, cows);
         }
 
         [TestMethod]
@@ -208,7 +289,8 @@
             game.ProccessGues(secret, guess, out bulls, out cows);
 
             // Assert
-            Assert.IsTrue(cows == 1 && bulls == 2);
+            Assert.AreEqual(2, bulls);
+            Assert.AreEqual(1, cows);
         }
 
         [TestMethod]
@@ -225,7 +307,8 @@
             game.ProccessGues(secret, guess, out bulls, out cows);
 
             // Assert
-            Assert.IsTrue(cows == 2 && bulls == 1);
+            Assert.AreEqual(1, bulls);
+            Assert.AreEqual(2, cows);
         }
 
         [TestMethod]
@@ -242,7 +325,8 @@
             game.ProccessGues(secret, guess, out bulls, out cows);
 
             // Assert
-            Assert.IsTrue(cows == 2 && bulls == 2);
+            Assert.AreEqual(2, bulls);
+            Assert.AreEqual(2, cows);
         }
 
         [TestMethod]
@@ -259,25 +343,25 @@
             game.ProccessGues(secret, guess, out bulls, out cows);
 
             // Assert
-            Assert.IsTrue(cows == 3 && bulls == 1);
+            Assert.AreEqual(1, bulls);
+            Assert.AreEqual(3, cows);
         }
 
-
         [TestMethod]
-        public void ProccessGues_Secret1234Guess1234_ShouldNeverReturn3Bull1Cow()
+        public void ProccessGues_Secret0987Guess0987_ShouldNeverReturn3Bull1Cow()
         {
             // Arrange
             BullsAndCows game = new BullsAndCows();
             int bulls = 0;
             int cows = 0;
-            int[] secret = { 1, 2, 3, 4 };
-            string guess = "1234";
+            int[] secret = { 0, 9, 8, 7 };
+            string guess = "0987";
 
             // Act
             game.ProccessGues(secret, guess, out bulls, out cows);
 
             // Assert
-            Assert.IsFalse(cows == 3 && bulls == 1);
+            Assert.IsFalse(bulls == 3 && cows == 1);
         }
 
         // Count a digit only ONCE
@@ -300,7 +384,8 @@
             game.ProccessGues(secret, guess, out bulls, out cows);
 
             // Assert
-            Assert.IsTrue(cows == 1 && bulls == 1);
+            Assert.AreEqual(1, bulls);
+            Assert.AreEqual(1, cows);
         }
 
         [TestMethod]
@@ -317,10 +402,10 @@
             game.ProccessGues(secret, guess, out bulls, out cows);
 
             // Assert
-            Assert.IsTrue(cows == 0 && bulls == 1);
+            Assert.AreEqual(1, bulls);
+            Assert.AreEqual(0, cows);
         }
 
-        // Reversed previous test
         [TestMethod]
         public void ProccessGues_Secret5555Guess5694_1Bull0Cow()
         {
@@ -335,7 +420,8 @@
             game.ProccessGues(secret, guess, out bulls, out cows);
 
             // Assert
-            Assert.IsTrue(cows == 0 && bulls == 1);
+            Assert.AreEqual(1, bulls);
+            Assert.AreEqual(0, cows);
         }
 
         [TestMethod]
@@ -346,13 +432,14 @@
             int bulls = 0;
             int cows = 0;
             int[] secret = { 5, 5, 5, 5 };
-            string guess = "5694";
+            string guess = "5555";
 
             // Act
             game.ProccessGues(secret, guess, out bulls, out cows);
 
             // Assert
-            Assert.IsTrue(cows == 0 && bulls == 4);
+            Assert.AreEqual(4, bulls);
+            Assert.AreEqual(0, cows);
         }
     }
 }
