@@ -1,0 +1,7 @@
+C:\Users\BOdyROck\Desktop\Visual\Bulls-and-Cows\Bulls-and-Cows\BullsAndCows.Tests\bin\x86\Debug\BullsAndCows.Tests.dll
+C:\Users\BOdyROck\Desktop\Visual\Bulls-and-Cows\Bulls-and-Cows\BullsAndCows.Tests\bin\x86\Debug\BullsAndCows.Tests.pdb
+C:\Users\BOdyROck\Desktop\Visual\Bulls-and-Cows\Bulls-and-Cows\BullsAndCows.Tests\bin\x86\Debug\BullsAndCows.exe
+C:\Users\BOdyROck\Desktop\Visual\Bulls-and-Cows\Bulls-and-Cows\BullsAndCows.Tests\bin\x86\Debug\BullsAndCows.pdb
+C:\Users\BOdyROck\Desktop\Visual\Bulls-and-Cows\Bulls-and-Cows\BullsAndCows.Tests\obj\x86\Debug\BullsAndCows.Tests.dll
+C:\Users\BOdyROck\Desktop\Visual\Bulls-and-Cows\Bulls-and-Cows\BullsAndCows.Tests\obj\x86\Debug\BullsAndCows.Tests.pdb
+C:\Users\BOdyROck\Desktop\Visual\Bulls-and-Cows\Bulls-and-Cows\BullsAndCows.Tests\obj\x86\Debug\BullsAndCows.Tests.csprojResolveAssemblyReference.cache
