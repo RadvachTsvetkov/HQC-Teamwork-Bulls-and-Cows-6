@@ -1,16 +1,17 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 
-	//napisah go nabyrzo ama NE SAM GO TESTVALA! probwaj dali raboti, maj ima bug ako sa 4 bika parvonanchalno
+//napisah go nabyrzo ama NE SAM GO TESTVALA! probwaj dali raboti, maj ima bug ako sa 4 bika parvonanchalno
 namespace BullsAndCows
 {
     public class BullsAndCows
     {
-        public const int NUMBER_OF_DIGITS = 4;
+        private const int NUMBER_OF_DIGITS = 4;
         private const string START_EXPRESSION = "Welcome to “Bulls and Cows” game.Please try to guess my secret 4-digit number.\n" +
                                                 "Use 'top' to view the top scoreboard, 'restart' to start a new game\n" +
                                                 "and 'help' to cheat and 'exit' to quit the game.";
-        private const string ENTER_GUES = "Enter your guess or command: ";
+        private const string ENTER_GUESS = "Enter your guess or command: ";
         private const string HELP = "The number looks like";
         private const string HELP_UNAVAILABLE = "You cannot use more help.";
         private const string WRONG_GUES = "Wrong number! ";
@@ -49,37 +50,67 @@ namespace BullsAndCows
 
         }
 
-        public bool ProccessGues(IList<int> digits, string gues, out int bulls, out int cows)
+        public bool ProccessGuess(IList<int> secret, string guess, out int bulls, out int cows)
         {
             bulls = 0;
             cows = 0;
-            if (gues.Length != NUMBER_OF_DIGITS)
+
+            if (guess.Length != NUMBER_OF_DIGITS)
             {
                 return false;
             }
 
-            int[] guestedDigits = new int[NUMBER_OF_DIGITS];
-            for (int index = 0; index < NUMBER_OF_DIGITS; index++)
+            bool containsOnlyDigits = guess.All(x => char.IsDigit(x));
+            if (!containsOnlyDigits)
             {
-                if (!int.TryParse(gues[index].ToString(), out guestedDigits[index]))
+                return false;
+            }
+
+            char[] secretDigits = secret.Select(x => x.ToString()[0]).ToArray();
+            char[] guessDigits = guess.ToCharArray();
+
+            bulls = CalculateBulls(secretDigits, guessDigits);
+            cows = CalculateCows(secretDigits, guessDigits);
+
+            return true;
+        }
+  
+        private int CalculateCows(char[] secretDigits, char[] guessDigits)
+        {
+            int cows = 0;
+            for (int i = 0; i < NUMBER_OF_DIGITS; i++)
+            {
+                for (int j = 0; j < NUMBER_OF_DIGITS; j++)
                 {
-                    return false;
-                }
-
-                if (guestedDigits[index] == digits[index])
-                {
-
-
-
-
-                    bulls++;
-                }
-                else if (digits.Contains(guestedDigits[index]))
-                {
-                    cows++;
+                    if (secretDigits[i] != 'B' && secretDigits[i] != 'C')
+                    {
+                        if (secretDigits[i] == guessDigits[j])
+                        {
+                            cows++;
+                            secretDigits[i] = 'C';
+                            guessDigits[j] = 'C';
+                            break;
+                        }
+                    }
                 }
             }
-            return true;
+
+            return cows;
+        }
+  
+        private int CalculateBulls(char[] secretDigits, char[] guessDigits)
+        {
+            int bulls = 0;
+            for (int index = 0; index < NUMBER_OF_DIGITS; index++)
+            {
+                if (secretDigits[index] == guessDigits[index])
+                {
+                    bulls++;
+                    secretDigits[index] = 'B';
+                    guessDigits[index] = 'B';
+                }
+            }
+            return bulls;
         }
 
         private string Help()
@@ -106,7 +137,7 @@ namespace BullsAndCows
                 Console.WriteLine(START_EXPRESSION);
                 do
                 {
-                    Console.WriteLine(ENTER_GUES);
+                    Console.WriteLine(ENTER_GUESS);
                     string line = Console.ReadLine();
 
                     if (line.Trim().ToLower().CompareTo("help") == 0)
@@ -145,7 +176,7 @@ namespace BullsAndCows
 
                     int bulls = 0;
                     int cows = 0;
-                    if (!ProccessGues(new List<int>(this.digits), line.Trim(), out bulls, out cows))
+                    if (!ProccessGuess(new List<int>(this.digits), line.Trim(), out bulls, out cows))
                     {
                         Console.WriteLine(WRONG_INPUT);
                         continue;

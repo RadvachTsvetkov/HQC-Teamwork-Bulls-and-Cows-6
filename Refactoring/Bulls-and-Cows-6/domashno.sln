@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "domashno", "domashno.csproj", "{2539AD65-CB56-4B81-93A5-14C77009FE52}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BullsAndCows", "BullsAndCows.csproj", "{2539AD65-CB56-4B81-93A5-14C77009FE52}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BullsAndCows.Tests", "..\BullsAndCows.Tests\BullsAndCows.Tests.csproj", "{6A6FFA38-1D45-4E11-AA6B-82350AB7DA82}"
 EndProject

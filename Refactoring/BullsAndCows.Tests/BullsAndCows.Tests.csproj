@@ -75,9 +75,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Bulls-and-Cows-6\domashno.csproj">
+    <ProjectReference Include="..\Bulls-and-Cows-6\BullsAndCows.csproj">
       <Project>{2539ad65-cb56-4b81-93a5-14c77009fe52}</Project>
-      <Name>domashno</Name>
+      <Name>BullsAndCows</Name>
     </ProjectReference>
   </ItemGroup>
   <Choose>
