@@ -73,10 +73,11 @@
   <ItemGroup>
     <Compile Include="BullsAndCowsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ScoreBoardTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Bulls-and-Cows-6\BullsAndCows.csproj">
-      <Project>{2539ad65-cb56-4b81-93a5-14c77009fe52}</Project>
+    <ProjectReference Include="..\BullsAndCows\BullsAndCows.csproj">
+      <Project>{f2bcdb9d-8295-4fe1-9df6-557c8f841456}</Project>
       <Name>BullsAndCows</Name>
     </ProjectReference>
   </ItemGroup>

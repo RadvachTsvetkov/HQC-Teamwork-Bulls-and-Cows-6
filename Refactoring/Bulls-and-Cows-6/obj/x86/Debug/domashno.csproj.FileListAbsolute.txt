@@ -1,5 +1,0 @@
-C:\Users\BOdyROck\Desktop\Visual\Bulls-and-Cows\Bulls-and-Cows\Bulls-and-Cows-6\bin\Debug\BullsAndCows.exe
-C:\Users\BOdyROck\Desktop\Visual\Bulls-and-Cows\Bulls-and-Cows\Bulls-and-Cows-6\bin\Debug\BullsAndCows.pdb
-C:\Users\BOdyROck\Desktop\Visual\Bulls-and-Cows\Bulls-and-Cows\Bulls-and-Cows-6\obj\x86\Debug\domashno.csprojResolveAssemblyReference.cache
-C:\Users\BOdyROck\Desktop\Visual\Bulls-and-Cows\Bulls-and-Cows\Bulls-and-Cows-6\obj\x86\Debug\BullsAndCows.exe
-C:\Users\BOdyROck\Desktop\Visual\Bulls-and-Cows\Bulls-and-Cows\Bulls-and-Cows-6\obj\x86\Debug\BullsAndCows.pdb
