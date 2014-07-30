@@ -1,70 +1,71 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-
-public class ScoreBoard
+﻿namespace BullsAndCowsGame
 {
-    public const int SCOREBOARD_SIZE = 5;
-    public const string SCOREBOARD_EMPTY = "Scoreboard is empty!";
+    using System;
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Text;
 
-    private static ScoreBoard instance;
-    private List<KeyValuePair<string, int>> scoreBoard;
-    private ScoreBoard()
+    public class ScoreBoard : IScoreBoard
     {
-        this.scoreBoard = new List<KeyValuePair<string, int>>();
-    }
-    public static ScoreBoard GetInstance()
-    {
-        if (instance == null)
+        public const int SCOREBOARD_SIZE = 5;
+        public const string SCOREBOARD_EMPTY = "Scoreboard is empty!";
+        public const string SCOREBOARD_TITLE = "Scoreboard:";
+        public const string SCOREBOARD_INPUT_FORMAT = "{0}. {1} --> {2} guesses";
+
+        private List<KeyValuePair<string, int>> scoreBoard;
+
+        public ScoreBoard()
         {
-            instance = new ScoreBoard();
+            this.scoreBoard = new List<KeyValuePair<string, int>>();
         }
 
-        return instance;
-    }
-    private void SortScoreBoard()
-    {
-        this.scoreBoard.Sort(new Comparison<KeyValuePair<string, int>>(
-            (first, second) => second.Value.CompareTo(first.Value)));
-    }
-    public bool IsHighScore(int attempts)
-    {
-        if (this.scoreBoard.Count < SCOREBOARD_SIZE || this.scoreBoard.Last().Value < attempts)
+        public bool IsHighScore(int attempts)
         {
-            return true;
+            if (this.scoreBoard.Count < SCOREBOARD_SIZE || this.scoreBoard.Last().Value < attempts)
+            {
+                return true;
+            }
+
+            return false;
         }
 
-        return false;
-    }
-    public void Add(string name, int attempts)
-    {
-        this.scoreBoard.Add(new KeyValuePair<string, int>(name, attempts));
-        SortScoreBoard();
-        if (this.scoreBoard.Count > SCOREBOARD_SIZE)
+        public void Add(string name, int attempts)
         {
-            this.scoreBoard.RemoveAt(this.scoreBoard.Count - 1);
+            var score = new KeyValuePair<string, int>(name, attempts);
+            this.scoreBoard.Add(score);
+
+            this.SortScoreBoard();
+            if (this.scoreBoard.Count > SCOREBOARD_SIZE)
+            {
+                this.scoreBoard.RemoveAt(this.scoreBoard.Count - 1);
+            }
         }
-    }
-    
-    public string GetScoreBoardAsString()
-    {
-        var output = new StringBuilder();
-        if (this.scoreBoard.Count == 0)
+
+        public string GetScoreBoardAsString()
         {
-            output.AppendLine(SCOREBOARD_EMPTY);
+            var output = new StringBuilder();
+            if (this.scoreBoard.Count == 0)
+            {
+                output.AppendLine(SCOREBOARD_EMPTY);
+                return output.ToString();
+            }
+
+            output.AppendLine(SCOREBOARD_TITLE);
+            for (int index = 0; index < this.scoreBoard.Count; index++)
+            {
+                string name = this.scoreBoard[index].Key;
+                int attempts = this.scoreBoard[index].Value;
+                output.AppendFormat(SCOREBOARD_INPUT_FORMAT, index + 1, name, attempts);
+                output.Append(Environment.NewLine);
+            }
+
             return output.ToString();
         }
 
-        output.AppendLine("Scoreboard:");
-        for (int index = 0; index < this.scoreBoard.Count; index++)
+        private void SortScoreBoard()
         {
-            string name = this.scoreBoard[index].Key;
-            int attempts = this.scoreBoard[index].Value;
-            output.AppendFormat("{0}. {1} --> {2} guesses", index + 1, name, attempts);
-            output.Append(Environment.NewLine);
+            this.scoreBoard.Sort(
+                (first, second) => first.Value.CompareTo(second.Value));
         }
-
-        return output.ToString();
     }
 }

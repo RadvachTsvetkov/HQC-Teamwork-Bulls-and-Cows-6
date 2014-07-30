@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30501.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BullsAndCows", "BullsAndCows\BullsAndCows.csproj", "{F2BCDB9D-8295-4FE1-9DF6-557C8F841456}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BullsAndCowsGame", "BullsAndCows\BullsAndCowsGame.csproj", "{F2BCDB9D-8295-4FE1-9DF6-557C8F841456}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BullsAndCows.Tests", "BullsAndCows.Tests\BullsAndCows.Tests.csproj", "{6A6FFA38-1D45-4E11-AA6B-82350AB7DA82}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BullsAndCowsGame.Tests", "BullsAndCows.Tests\BullsAndCowsGame.Tests.csproj", "{6A6FFA38-1D45-4E11-AA6B-82350AB7DA82}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

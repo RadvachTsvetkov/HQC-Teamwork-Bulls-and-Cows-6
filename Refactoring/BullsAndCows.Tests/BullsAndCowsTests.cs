@@ -1,8 +1,10 @@
-﻿namespace BullsAndCows.Tests
+﻿namespace BullsAndCowsGame.Tests
 {
-    using System;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
+    using System;
+    using System.IO;
     using System.Text;
+    using Telerik.JustMock;
 
     [TestClass]
     public class BullsAndCowsTests
@@ -460,7 +462,6 @@
             Assert.AreEqual(1, cows);
         }
 
-
         [TestMethod]
         public void CalculateBullsAndCows_Secret1234Guess4440_0Bull1Cow()
         {
@@ -477,6 +478,73 @@
             // Assert
             Assert.AreEqual(0, bulls);
             Assert.AreEqual(1, cows);
+        }
+
+
+        [TestMethod]
+        public void TEST_JUST_MOCK()
+        {
+            // Prepair input
+            var input = new StringBuilder();
+            input.AppendLine("2222");
+            input.AppendLine("Pesho");
+            input.AppendLine("exit");
+
+            // Prepair expected
+            var expectedOutput = new StringBuilder();
+            expectedOutput.AppendLine(BullsAndCows.START_EXPRESSION);
+            expectedOutput.AppendLine(BullsAndCows.ENTER_GUESS);
+
+            expectedOutput.AppendLine(String.Format(BullsAndCows.CONGRATULATIONS_WITHOUT_CHEATS, 1));
+            expectedOutput.AppendLine(BullsAndCows.ASK_NAME_FOR_SCOREBOARD);
+            expectedOutput.AppendLine(ScoreBoard.SCOREBOARD_TITLE);
+            expectedOutput.AppendLine(String.Format(ScoreBoard.SCOREBOARD_INPUT_FORMAT, 1, "Pesho", 1));
+
+            expectedOutput.Append(Environment.NewLine);
+            expectedOutput.AppendLine(BullsAndCows.START_EXPRESSION);
+            expectedOutput.AppendLine(BullsAndCows.ENTER_GUESS);
+            expectedOutput.AppendLine(BullsAndCows.EXIT_GAME);
+            // Redirect Console
+            Console.SetIn(new StringReader(input.ToString()));
+            StringWriter consoleOutput = new StringWriter();
+            Console.SetOut(consoleOutput);
+
+            var mockedNumber = Mock.Create<IRandomNumberProvider>();
+            Mock.Arrange(() => mockedNumber.GetRandomNumber(0, 10)).Returns(2);
+            BullsAndCows game = new BullsAndCows(mockedNumber);
+            game.StartGame();
+
+            // Assert
+            string expected = expectedOutput.ToString();
+            string actual = consoleOutput.ToString();
+            Assert.AreEqual(expected, actual);
+        }
+
+        [TestMethod]
+        public void StartGameMethod_IfRestartCommandWorksCorrectly()
+        {
+            // Prepair input
+            var input = new StringBuilder();
+            input.AppendLine("restart");
+            input.AppendLine("exit");
+
+            // Prepair expected
+            var expectedOutput = new StringBuilder();
+            expectedOutput.AppendLine(BullsAndCows.START_EXPRESSION);
+            expectedOutput.AppendLine(BullsAndCows.ENTER_GUESS);
+            expectedOutput.Append(Environment.NewLine);
+            expectedOutput.AppendLine(BullsAndCows.START_EXPRESSION);
+            expectedOutput.AppendLine(BullsAndCows.ENTER_GUESS);
+            expectedOutput.AppendLine(BullsAndCows.EXIT_GAME);
+            // input.....
+            Console.SetIn(new StringReader(input.ToString()));
+            StringWriter consoleOutput = new StringWriter();
+            Console.SetOut(consoleOutput);
+            BullsAndCows.Main();
+
+            string expected = expectedOutput.ToString();
+            string actual = consoleOutput.ToString();
+            Assert.AreEqual(expected, actual);
         }
     }
 }

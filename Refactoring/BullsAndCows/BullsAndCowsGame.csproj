@@ -7,8 +7,8 @@
     <ProjectGuid>{F2BCDB9D-8295-4FE1-9DF6-557C8F841456}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>BullsAndCows</RootNamespace>
-    <AssemblyName>BullsAndCows</AssemblyName>
+    <RootNamespace>BullsAndCowsGame</RootNamespace>
+    <AssemblyName>BullsAndCowsGame</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -42,7 +42,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BullsAndCows.cs" />
+    <Compile Include="IRandomNumberProvider.cs" />
+    <Compile Include="IScoreBoard.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RandomNumberProvider.cs" />
     <Compile Include="ScoreBoard.cs" />
   </ItemGroup>
   <ItemGroup>

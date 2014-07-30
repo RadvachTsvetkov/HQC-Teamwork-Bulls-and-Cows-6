@@ -1,0 +1,6 @@
+C:\Users\BOdyROck\Desktop\Visual\Bulls-and-Cows\Bulls-and-Cows\Bulls-and-Cows-6\BullsAndCowsGame\BullsAndCows\bin\Debug\BullsAndCowsGame.exe.config
+C:\Users\BOdyROck\Desktop\Visual\Bulls-and-Cows\Bulls-and-Cows\Bulls-and-Cows-6\BullsAndCowsGame\BullsAndCows\bin\Debug\BullsAndCowsGame.exe
+C:\Users\BOdyROck\Desktop\Visual\Bulls-and-Cows\Bulls-and-Cows\Bulls-and-Cows-6\BullsAndCowsGame\BullsAndCows\bin\Debug\BullsAndCowsGame.pdb
+C:\Users\BOdyROck\Desktop\Visual\Bulls-and-Cows\Bulls-and-Cows\Bulls-and-Cows-6\BullsAndCowsGame\BullsAndCows\obj\Debug\BullsAndCowsGame.csprojResolveAssemblyReference.cache
+C:\Users\BOdyROck\Desktop\Visual\Bulls-and-Cows\Bulls-and-Cows\Bulls-and-Cows-6\BullsAndCowsGame\BullsAndCows\obj\Debug\BullsAndCowsGame.exe
+C:\Users\BOdyROck\Desktop\Visual\Bulls-and-Cows\Bulls-and-Cows\Bulls-and-Cows-6\BullsAndCowsGame\BullsAndCows\obj\Debug\BullsAndCowsGame.pdb
