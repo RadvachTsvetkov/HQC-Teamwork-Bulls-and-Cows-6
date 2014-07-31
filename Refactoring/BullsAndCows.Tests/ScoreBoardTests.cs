@@ -1,9 +1,10 @@
 ﻿namespace BullsAndCowsGame.Tests
 {
     using System;
-    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using System.IO;
     using System.Text;
+
+    using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Telerik.JustMock;
 
     [TestClass]
@@ -25,7 +26,7 @@
             expectedOutput.Append(Environment.NewLine);
             expectedOutput.AppendLine(BullsAndCows.ENTER_GUESS);
             expectedOutput.AppendLine(BullsAndCows.EXIT_GAME);
-            // input.....
+            
             Console.SetIn(new StringReader(input.ToString()));
             StringWriter consoleOutput = new StringWriter();
             Console.SetOut(consoleOutput);

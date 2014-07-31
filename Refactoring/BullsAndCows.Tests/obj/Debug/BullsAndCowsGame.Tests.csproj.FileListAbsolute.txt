@@ -1,8 +1,0 @@
-C:\Users\BOdyROck\Desktop\Visual\Bulls-and-Cows\Bulls-and-Cows\Bulls-and-Cows-6\BullsAndCowsGame\BullsAndCows.Tests\bin\Debug\BullsAndCowsGame.Tests.dll
-C:\Users\BOdyROck\Desktop\Visual\Bulls-and-Cows\Bulls-and-Cows\Bulls-and-Cows-6\BullsAndCowsGame\BullsAndCows.Tests\bin\Debug\BullsAndCowsGame.Tests.pdb
-C:\Users\BOdyROck\Desktop\Visual\Bulls-and-Cows\Bulls-and-Cows\Bulls-and-Cows-6\BullsAndCowsGame\BullsAndCows.Tests\bin\Debug\BullsAndCowsGame.exe
-C:\Users\BOdyROck\Desktop\Visual\Bulls-and-Cows\Bulls-and-Cows\Bulls-and-Cows-6\BullsAndCowsGame\BullsAndCows.Tests\bin\Debug\Telerik.JustMock.dll
-C:\Users\BOdyROck\Desktop\Visual\Bulls-and-Cows\Bulls-and-Cows\Bulls-and-Cows-6\BullsAndCowsGame\BullsAndCows.Tests\bin\Debug\BullsAndCowsGame.pdb
-C:\Users\BOdyROck\Desktop\Visual\Bulls-and-Cows\Bulls-and-Cows\Bulls-and-Cows-6\BullsAndCowsGame\BullsAndCows.Tests\obj\Debug\BullsAndCowsGame.Tests.csprojResolveAssemblyReference.cache
-C:\Users\BOdyROck\Desktop\Visual\Bulls-and-Cows\Bulls-and-Cows\Bulls-and-Cows-6\BullsAndCowsGame\BullsAndCows.Tests\obj\Debug\BullsAndCowsGame.Tests.dll
-C:\Users\BOdyROck\Desktop\Visual\Bulls-and-Cows\Bulls-and-Cows\Bulls-and-Cows-6\BullsAndCowsGame\BullsAndCows.Tests\obj\Debug\BullsAndCowsGame.Tests.pdb
